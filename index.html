@@ -10,17 +10,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .header{background:#1a1a1a;color:#fff;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
 .header h1{font-size:16px;font-weight:500;letter-spacing:.3px}
 .header span{font-size:12px;color:#888}
-.container{max-width:780px;margin:0 auto;padding:1.5rem 1rem}
+.container{max-width:820px;margin:0 auto;padding:1.5rem 1rem}
 .card{background:#fff;border-radius:12px;border:1px solid #e8e6e0;padding:1.25rem;margin-bottom:1rem}
-.card-title{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-@media(max-width:500px){.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+@media(max-width:540px){.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
 .ig{display:flex;flex-direction:column;gap:4px}
-.ig label{font-size:12px;color:#666;font-weight:500}
+.ig label{font-size:12px;color:#555;font-weight:500}
 .ig input,.ig select{width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;background:#fff;color:#1a1a1a}
 .ig input:focus,.ig select:focus{outline:none;border-color:#1a1a1a}
-.btn{background:#1a1a1a;color:#fff;border:none;border-radius:8px;padding:11px 24px;font-size:14px;font-weight:500;cursor:pointer;width:100%;font-family:inherit;letter-spacing:.2px}
+.btn{background:#1a1a1a;color:#fff;border:none;border-radius:8px;padding:11px 24px;font-size:14px;font-weight:500;cursor:pointer;width:100%;font-family:inherit}
 .btn:hover{background:#333}
 .hidden{display:none}
 .err{color:#c0392b;font-size:13px;padding:6px 0}
@@ -28,18 +27,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .dm-cn{font-size:28px;margin-bottom:4px}
 .dm-name{font-size:15px;font-weight:500;margin-bottom:6px}
 .dm-desc{font-size:13px;color:#aaa;line-height:1.6}
-.tabs{display:flex;gap:0;border-bottom:1px solid #e8e6e0;margin-bottom:1rem;overflow-x:auto}
-.tab{padding:9px 16px;font-size:13px;cursor:pointer;color:#888;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;font-family:inherit;background:none;border-top:none;border-left:none;border-right:none}
+.tabs{display:flex;border-bottom:1px solid #e8e6e0;margin-bottom:1rem;overflow-x:auto}
+.tab{padding:9px 14px;font-size:13px;cursor:pointer;color:#888;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
 .tab.active{color:#1a1a1a;font-weight:500;border-bottom-color:#1a1a1a}
 .tp{display:none}.tp.active{display:block}
-.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem}
-@media(max-width:500px){.pillars-grid{grid-template-columns:repeat(2,1fr)}}
-.pc{background:#f8f7f4;border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #e8e6e0}
-.pc-lbl{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.pc-cn{font-size:20px;color:#555;margin:2px 0}
-.pc-en{font-size:11px;font-weight:500;color:#1a1a1a;line-height:1.3}
-.pc-sub{font-size:10px;color:#999;margin-top:2px}
-.eb{font-size:10px;padding:2px 7px;border-radius:99px;display:inline-block;margin-top:5px}
+.act-filter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
+.act-btn{padding:5px 12px;font-size:12px;border-radius:99px;border:1px solid #ddd;cursor:pointer;background:#fff;color:#555;font-family:inherit}
+.act-btn:hover{background:#f8f7f4}
+.act-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
 .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;color:#666;margin-bottom:.75rem}
 .li{display:flex;align-items:center;gap:5px}
 .ld{width:10px;height:10px;border-radius:2px;flex-shrink:0}
@@ -49,61 +44,100 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .month-lbl{font-size:15px;font-weight:500}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
 .cal-hdr{font-size:11px;color:#999;text-align:center;padding:4px 0}
-.dc{border-radius:8px;padding:5px 3px;text-align:center;border:1px solid #e8e6e0;cursor:pointer;min-height:80px;display:flex;flex-direction:column;align-items:center;gap:1px;transition:border-color .15s}
+.dc{border-radius:8px;padding:4px 3px;text-align:center;border:1px solid #e8e6e0;cursor:pointer;min-height:96px;display:flex;flex-direction:column;align-items:center;gap:1px;transition:border-color .15s}
 .dc:hover{border-color:#1a1a1a}
 .dc.empty{border:none;background:none;cursor:default}
 .dc-num{font-size:13px;font-weight:600;margin-top:2px}
-.dc-off{font-size:9px;padding:1px 4px;border-radius:3px;margin-top:1px}
-.dc-score{font-size:8px;color:#999;margin-top:1px}
-.dc-verdict{font-size:8px;padding:2px 4px;border-radius:3px;margin-top:auto;margin-bottom:2px;width:calc(100% - 4px);text-align:center;line-height:1.3;font-weight:500}
+.dc-off{font-size:8px;padding:1px 4px;border-radius:3px;margin-top:1px;width:calc(100% - 4px);text-align:center}
+.dc-mansion{font-size:8px;color:#888;margin-top:1px}
+.dc-stars-g{font-size:7px;color:#2d5a0e;margin-top:1px;line-height:1.3;text-align:center}
+.dc-stars-b{font-size:7px;color:#a32d2d;margin-top:1px;line-height:1.3;text-align:center}
+.dc-warn{font-size:7px;color:#b7770d;margin-top:1px;font-weight:500}
+.dc-verdict{font-size:8px;padding:2px 3px;border-radius:3px;margin-top:auto;margin-bottom:2px;width:calc(100% - 4px);text-align:center;line-height:1.2;font-weight:600}
 .day-strong{background:#eaf3de;border-color:#639922}.day-strong .dc-num{color:#2d5a0e}
 .day-good{background:#f0f7e6;border-color:#97c459}.day-good .dc-num{color:#3b6d11}
-.day-caution{background:#fef9ed;border-color:#f0c040}.day-caution .dc-num{color:#7a5c00}
+.day-caution{background:#fef9ed;border-color:#e6a800}.day-caution .dc-num{color:#7a5c00}
 .day-avoid{background:#fcebeb;border-color:#e24b4a}.day-avoid .dc-num{color:#791f1f}
 .day-conflict{background:#eef4fc;border-color:#85b7eb}.day-conflict .dc-num{color:#0c447c}
-.day-rest{background:#f8f7f4;border-color:#e8e6e0}.day-rest .dc-num{color:#555}
+.day-rest .dc-num{color:#555}
+.today-ring{outline:2px solid #1a1a1a;outline-offset:1px}
 .off-good{background:#eaf3de;color:#2d5a0e}
 .off-bad{background:#fcebeb;color:#791f1f}
-.off-neutral{background:#f0f0f0;color:#666}
 .v-strong{background:#2d5a0e;color:#fff}
-.v-good{background:#639922;color:#fff}
-.v-caution{background:#e6a800;color:#fff}
-.v-avoid{background:#c0392b;color:#fff}
-.v-conflict{background:#2980b9;color:#fff}
+.v-good{background:#3b6d11;color:#fff}
+.v-caution{background:#b7770d;color:#fff}
+.v-avoid{background:#a32d2d;color:#fff}
+.v-conflict{background:#185fa5;color:#fff}
 .v-rest{background:#888;color:#fff}
-.today-ring{outline:2px solid #1a1a1a;outline-offset:1px}
 .det{background:#fff;border-radius:12px;padding:1.25rem;margin-top:.75rem;border:1px solid #e8e6e0;display:none}
 .det.on{display:block}
-.det-verdict-box{border-radius:10px;padding:1rem;margin-bottom:1rem}
-.det-verdict-box strong{display:block;font-size:16px;margin-bottom:6px}
-.det-verdict-box p{font-size:13px;line-height:1.6}
-.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
+.det-verdict{border-radius:10px;padding:.9rem 1rem;margin-bottom:.75rem}
+.det-verdict strong{display:block;font-size:15px;margin-bottom:5px}
+.det-verdict p{font-size:13px;line-height:1.6}
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:.75rem}
 @media(max-width:500px){.det-grid{grid-template-columns:1fr}}
-.det-box{background:#f8f7f4;border:1px solid #e8e6e0;border-radius:8px;padding:.75rem}
-.det-box-label{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
-.det-box-val{font-size:14px;font-weight:500;color:#1a1a1a}
-.det-box-sub{font-size:11px;color:#666;margin-top:3px;line-height:1.4}
-.int-wrap{margin-top:.5rem}
-.int-label{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
-.int-list{display:flex;flex-wrap:wrap;gap:4px}
-.tag{font-size:11px;padding:3px 9px;border-radius:99px;display:inline-block}
+.det-box{background:#f8f7f4;border:1px solid #e8e6e0;border-radius:8px;padding:.7rem .8rem}
+.dbl{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
+.dbv{font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:2px}
+.dbs{font-size:11px;color:#666;line-height:1.4}
+.section-title{font-size:12px;font-weight:600;color:#1a1a1a;margin:.75rem 0 .4rem;text-transform:uppercase;letter-spacing:.3px}
+.star-list{display:flex;flex-direction:column;gap:4px;margin-bottom:.75rem}
+.star-row{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;border-radius:8px;font-size:12px}
+.star-good{background:#eaf3de}
+.star-bad{background:#fcebeb}
+.star-cn{font-size:15px;flex-shrink:0;width:22px}
+.star-en{font-weight:600;flex-shrink:0;min-width:130px;color:#1a1a1a}
+.star-desc{color:#555;line-height:1.4}
+.hour-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:.75rem}
+@media(max-width:500px){.hour-grid{grid-template-columns:repeat(3,1fr)}}
+.hc{border-radius:8px;padding:6px 4px;text-align:center;border:1px solid #e8e6e0;background:#f8f7f4}
+.hc-time{font-size:8px;color:#999}
+.hc-branch{font-size:12px;font-weight:600;color:#1a1a1a;margin:2px 0}
+.hc-en{font-size:9px;color:#666}
+.hc-score{font-size:9px;margin-top:3px;padding:1px 5px;border-radius:3px;display:inline-block}
+.hg{background:#eaf3de;border-color:#639922}.hg .hc-branch{color:#2d5a0e}
+.hb{background:#fcebeb;border-color:#e24b4a}.hb .hc-branch{color:#791f1f}
+.warn-box{background:#fef3cd;border:1px solid #e6a800;border-radius:8px;padding:.65rem .8rem;margin-bottom:.75rem;font-size:12px;color:#7a5c00;line-height:1.5}
+.warn-box strong{display:block;margin-bottom:3px}
+.act-result{background:#f0f7e6;border:1px solid #97c459;border-radius:8px;padding:.65rem .8rem;margin-bottom:.75rem}
+.act-result-name{font-size:13px;font-weight:600;color:#2d5a0e;margin-bottom:3px}
+.act-result-desc{font-size:12px;color:#555;line-height:1.5}
+.act-avoid{background:#fcebeb;border-color:#e24b4a}
+.act-avoid .act-result-name{color:#791f1f}
+.int-list{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.75rem}
+.tag{font-size:11px;padding:3px 9px;border-radius:99px}
 .tag-g{background:#eaf3de;color:#2d5a0e}
 .tag-b{background:#fcebeb;color:#791f1f}
 .tag-n{background:#f0f0f0;color:#666}
-.score-bar{display:flex;align-items:center;gap:8px;margin-top:6px}
-.score-track{flex:1;height:4px;background:#e8e6e0;border-radius:2px;overflow:hidden}
+.score-bar{display:flex;align-items:center;gap:8px;margin-top:5px}
+.score-track{flex:1;height:4px;background:#ddd;border-radius:2px;overflow:hidden}
 .score-fill{height:100%;border-radius:2px}
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:1rem 0}
+@media(max-width:500px){.pillars-grid{grid-template-columns:repeat(2,1fr)}}
+.pc{background:#f8f7f4;border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #e8e6e0}
+.pc-lbl{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.pc-cn{font-size:20px;color:#555;margin:2px 0}
+.pc-en{font-size:11px;font-weight:500;color:#1a1a1a;line-height:1.3}
+.pc-sub{font-size:10px;color:#999;margin-top:2px}
+.eb{font-size:10px;padding:2px 8px;border-radius:99px;display:inline-block;margin-top:5px}
 .lp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:6px;margin:1rem 0}
 .lpc{background:#f8f7f4;border-radius:10px;padding:8px;border:1px solid #e8e6e0;text-align:center}
 .lpc.cur{border-color:#2980b9;background:#eef4fc}
 .lpc-age{font-size:10px;color:#999}
 .lpc-cn{font-size:16px;color:#555;margin:3px 0}
 .lpc-en{font-size:11px;font-weight:500}
+.guide-section{margin-bottom:1.25rem}
+.guide-section h3{font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:.4rem}
+.guide-section p{font-size:13px;color:#555;line-height:1.7}
 .do-row{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid #f0f0f0;font-size:12px;align-items:flex-start}
 .do-row:last-child{border:none}
-.score-explainer{display:flex;flex-direction:column;gap:2px;margin:.5rem 0}
+.score-explainer{margin:.5rem 0}
 .se-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0f0f0;font-size:12px}
 .se-row:last-child{border:none}
+.verdict-legend{display:flex;flex-direction:column;gap:5px;margin:.5rem 0}
+.vl-row{display:flex;align-items:flex-start;gap:10px;font-size:12px}
+.vl-badge{padding:3px 9px;border-radius:3px;white-space:nowrap;flex-shrink:0;font-weight:600;font-size:11px}
+footer{text-align:center;font-size:11px;color:#bbb;margin-top:1.5rem;padding-bottom:1.5rem;line-height:1.8}
 </style>
 </head>
 <body>
@@ -114,9 +148,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <div class="container">
-
   <div class="card" id="inputCard">
-    <div class="card-title">Your birth details</div>
+    <div style="font-size:12px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem">Your birth details</div>
     <div class="grid3">
       <div class="ig"><label>Birth date</label><input type="date" id="bDate" value="1999-08-27"></div>
       <div class="ig"><label>Birth time</label><input type="time" id="bTime" value="15:54"></div>
@@ -140,19 +173,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="card" style="padding-bottom:.5rem">
       <div class="tabs">
         <button class="tab active" onclick="sw('calendar',this)">Calendar</button>
-        <button class="tab" onclick="sw('pillars',this)">My four pillars</button>
+        <button class="tab" onclick="sw('pillars',this)">Four pillars</button>
         <button class="tab" onclick="sw('luckpillars',this)">Luck pillars</button>
         <button class="tab" onclick="sw('guide',this)">Reading guide</button>
       </div>
 
       <div class="tp active" id="tp-calendar">
+        <div style="font-size:11px;color:#999;margin-bottom:.5rem">Filter by activity to re-rate every day for that purpose:</div>
+        <div class="act-filter" id="actFilter"></div>
         <div class="legend">
-          <div class="li"><div class="ld" style="background:#2d5a0e"></div>Strong day — act boldly</div>
-          <div class="li"><div class="ld" style="background:#639922"></div>Good day — proceed</div>
-          <div class="li"><div class="ld" style="background:#e6a800"></div>Proceed with care</div>
-          <div class="li"><div class="ld" style="background:#c0392b"></div>Avoid major decisions</div>
-          <div class="li"><div class="ld" style="background:#2980b9"></div>Conflicting signals</div>
-          <div class="li"><div class="ld" style="background:#888"></div>Rest / routine only</div>
+          <div class="li"><div class="ld" style="background:#2d5a0e"></div>Strong day</div>
+          <div class="li"><div class="ld" style="background:#3b6d11"></div>Good day</div>
+          <div class="li"><div class="ld" style="background:#b7770d"></div>Proceed with care</div>
+          <div class="li"><div class="ld" style="background:#a32d2d"></div>Avoid today</div>
+          <div class="li"><div class="ld" style="background:#185fa5"></div>Conflicting</div>
+          <div class="li"><div class="ld" style="background:#888"></div>Rest day</div>
         </div>
         <div class="nav-row">
           <button class="nav-btn" onclick="chMon(-1)">← prev</button>
@@ -168,48 +203,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
       <div class="tp" id="tp-pillars">
         <div class="pillars-grid" id="pillarsGrid"></div>
-        <p style="font-size:12px;color:#666;line-height:1.7">Your <strong>Day Master</strong> (the day stem) represents your core self. The four pillars together show the elemental energies present at your birth — their balance shapes personality, strengths, and the types of energy you naturally attract or need.</p>
+        <p style="font-size:12px;color:#666;line-height:1.7">Your <strong>Day Master</strong> (day stem) represents your core self. The four pillars show the elemental energies at your birth moment — their balance shapes personality, strengths, and the energy you naturally attract.</p>
       </div>
 
       <div class="tp" id="tp-luckpillars">
-        <p style="font-size:13px;color:#666;margin-bottom:.75rem;line-height:1.6">Luck Pillars (大運 Dà Yùn) are 10-year energy cycles that overlay your birth chart. Each pillar brings a different elemental energy into your life. Your current pillar is highlighted in blue.</p>
+        <p style="font-size:13px;color:#666;margin-bottom:.75rem;line-height:1.6">Luck Pillars (大運 Dà Yùn) are 10-year energy cycles overlaying your chart. Each brings a different elemental climate. Your current pillar is highlighted in blue.</p>
         <div class="lp-grid" id="lpGrid"></div>
+        <p style="font-size:12px;color:#999;line-height:1.7;margin-top:.5rem">The transition between pillars is one of the most significant periods in life — career changes, relationship shifts, and major decisions often cluster around these transitions.</p>
       </div>
 
-      <div class="tp" id="tp-guide">
-        <p style="font-size:13px;font-weight:500;margin-bottom:.5rem">The two layers explained</p>
-        <p style="font-size:13px;color:#666;line-height:1.7;margin-bottom:1rem">Every day has two independent ratings. The <strong>Day Officer</strong> is universal — identical for every person on earth. Your <strong>personal score</strong> is unique to your Bazi chart. The coloured verdict synthesises both into one recommendation.</p>
-
-        <p style="font-size:13px;font-weight:500;margin-bottom:.5rem">The six verdicts</p>
-        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:1.25rem">
-          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#2d5a0e;color:#fff;white-space:nowrap;flex-shrink:0">Strong day</span><span style="color:#666">Universal officer is favourable AND personal score is high. Act boldly.</span></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#639922;color:#fff;white-space:nowrap;flex-shrink:0">Good day</span><span style="color:#666">One layer is positive with no major negatives. Decent day to move things forward.</span></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#e6a800;color:#fff;white-space:nowrap;flex-shrink:0">Proceed with care</span><span style="color:#666">Mixed signals — one layer positive, the other cautious. Low-stakes activities only.</span></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#c0392b;color:#fff;white-space:nowrap;flex-shrink:0">Avoid today</span><span style="color:#666">Both layers are negative. Rest and routine tasks only.</span></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#2980b9;color:#fff;white-space:nowrap;flex-shrink:0">Conflicting</span><span style="color:#666">Officer and personal score disagree. Personal matters only — avoid public commitments.</span></div>
-          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#888;color:#fff;white-space:nowrap;flex-shrink:0">Rest day</span><span style="color:#666">Neutral across both layers. Fine for routine and admin.</span></div>
-        </div>
-
-        <p style="font-size:13px;font-weight:500;margin-bottom:.5rem">The 12 Day Officers — universal for everyone</p>
-        <div id="officerGuide" style="margin-bottom:1.25rem"></div>
-
-        <p style="font-size:13px;font-weight:500;margin-bottom:.5rem">How the personal score is calculated</p>
-        <p style="font-size:12px;color:#666;line-height:1.7;margin-bottom:.5rem">Your 8 birth characters are compared against that day's Stem + Branch pair. Each interaction is scored:</p>
-        <div class="score-explainer">
-          <div class="se-row"><span>Stem harmony (天干合)</span><span style="color:#2d5a0e;font-weight:500">+2 points</span></div>
-          <div class="se-row"><span>Branch harmony (地支合)</span><span style="color:#2d5a0e;font-weight:500">+2 points</span></div>
-          <div class="se-row"><span>Favourable element match</span><span style="color:#2d5a0e;font-weight:500">+1 point</span></div>
-          <div class="se-row"><span>Stem clash</span><span style="color:#c0392b;font-weight:500">−2 points</span></div>
-          <div class="se-row"><span>Branch clash (地支冲)</span><span style="color:#c0392b;font-weight:500">−3 points</span></div>
-        </div>
-        <p style="font-size:12px;color:#666;line-height:1.7;margin-top:.5rem">Typical scores range from about −6 to +7. Scores of +3 or above are auspicious; −2 or below are inauspicious.</p>
-      </div>
+      <div class="tp" id="tp-guide"><div id="guideContent"></div></div>
     </div>
   </div>
 
-  <div style="text-align:center;font-size:11px;color:#bbb;margin-top:1.5rem;padding-bottom:1rem">
-    Calculations based on traditional Bazi (八字) date selection methodology.<br>For personal guidance only.
-  </div>
+  <footer>
+    Calculations based on traditional Bazi (八字) date selection methodology.<br>
+    Shen Sha stars · 28 Lunar Mansions · 12 Day Officers · Personal chart interactions<br>
+    For personal guidance only.
+  </footer>
 </div>
 
 <script>
@@ -217,37 +228,142 @@ const STEMS=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
 const BRANCHES=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
 const STEM_EN=['Jiǎ Wood+','Yǐ Wood−','Bǐng Fire+','Dīng Fire−','Wù Earth+','Jǐ Earth−','Gēng Metal+','Xīn Metal−','Rén Water+','Guǐ Water−'];
 const BRANCH_EN=['Zǐ Rat','Chǒu Ox','Yín Tiger','Mǎo Rabbit','Chén Dragon','Sì Snake','Wǔ Horse','Wèi Goat','Shēn Monkey','Yǒu Rooster','Xū Dog','Hài Pig'];
+const BRANCH_SHORT=['Rat','Ox','Tiger','Rabbit','Dragon','Snake','Horse','Goat','Monkey','Rooster','Dog','Pig'];
 const STEM_ELEM=['Wood','Wood','Fire','Fire','Earth','Earth','Metal','Metal','Water','Water'];
 const ELEM_COL={Wood:'#639922',Fire:'#c0392b',Earth:'#b7770d',Metal:'#7f8c8d',Water:'#2980b9'};
 const FAVELEM={Wood:['Water','Wood'],Fire:['Wood','Fire'],Earth:['Fire','Earth'],Metal:['Earth','Metal'],Water:['Metal','Water']};
+
 const OFFICERS=[
-  {cn:'建',en:'Establish',good:true,desc:'Starting new ventures, business launches, beginning construction'},
-  {cn:'除',en:'Remove',good:true,desc:'Clearing clutter, ending bad habits, medical treatments, clean breaks'},
-  {cn:'满',en:'Full',good:false,desc:'Avoid major decisions — energy is excessive and unstable today'},
+  {cn:'建',en:'Establish',good:true,desc:'Start new ventures, launch projects, begin construction'},
+  {cn:'除',en:'Remove',good:true,desc:'Clear clutter, end bad habits, medical treatments, clean breaks'},
+  {cn:'满',en:'Full',good:false,desc:'Avoid major decisions — energy is excessive and unstable'},
   {cn:'平',en:'Balance',good:true,desc:'Negotiations, resolving disputes, finding middle ground'},
-  {cn:'定',en:'Stable',good:true,desc:'Signing contracts, moving house, making long-term commitments'},
-  {cn:'执',en:'Execute',good:true,desc:'Taking decisive action, pursuing important goals'},
+  {cn:'定',en:'Stable',good:true,desc:'Sign contracts, move house, make long-term commitments'},
+  {cn:'执',en:'Execute',good:true,desc:'Take decisive action, pursue important goals'},
   {cn:'破',en:'Destruction',good:false,desc:'Universally inauspicious — avoid all major activities'},
-  {cn:'危',en:'Danger',good:false,desc:'Avoid risky activities, travel, heights, and water'},
-  {cn:'成',en:'Success',good:true,desc:'Excellent for almost everything — one of the strongest day types'},
-  {cn:'收',en:'Receive',good:true,desc:'Collecting payments, receiving gifts, harvesting results'},
+  {cn:'危',en:'Danger',good:false,desc:'Avoid risky activities, travel, heights, water'},
+  {cn:'成',en:'Success',good:true,desc:'Excellent for almost everything — one of the strongest types'},
+  {cn:'收',en:'Receive',good:true,desc:'Collect payments, receive gifts, harvest results'},
   {cn:'开',en:'Open',good:true,desc:'Grand openings, new beginnings, first meetings'},
-  {cn:'闭',en:'Close',good:false,desc:'Rest and consolidation — not suitable for launches or new starts'}
+  {cn:'闭',en:'Close',good:false,desc:'Rest and consolidation — not for launches or new starts'}
 ];
-const DM={
-  '甲':['Jiǎ Yang Wood','Strong-willed pioneer with natural leadership. High integrity and direct communication. Thrives with clear goals.'],
-  '乙':['Yǐ Yin Wood','Adaptable and charming diplomat. Bends without breaking — resilient under pressure. Excellent at reading people.'],
-  '丙':['Bǐng Yang Fire','Radiant and generous. Natural communicator who lights up any room. Watch for burning out from giving too much.'],
-  '丁':['Dīng Yin Fire','Thoughtful and persistent. Sharp intuition and artistic depth. A quiet candle that outlasts the bonfire.'],
-  '戊':['Wù Yang Earth','Dependable mountain. Stable, patient, and protective. People naturally rely on you.'],
-  '己':['Jǐ Yin Earth','Nurturing and meticulous. Warm-hearted planner with genuine care for others. Excels at detail-oriented work.'],
-  '庚':['Gēng Yang Metal','Bold and decisive with strong principles. A natural problem-solver who cuts through confusion.'],
-  '辛':['Xīn Yin Metal','Refined and perceptive. Perfectionist streak with aesthetic sensibility. Feels things deeply.'],
-  '壬':['Rén Yang Water','Visionary and resourceful. Big-picture thinker who adapts easily to any environment.'],
-  '癸':['Guǐ Yin Water','Intuitive and perceptive. Deep thinker with natural empathy. Wisdom through stillness.']
+
+const MANSIONS=[
+  {cn:'角',en:'Horn',good:true,desc:'Auspicious for starting things, travel, and ceremonies'},
+  {cn:'亢',en:'Neck',good:false,desc:'Inauspicious — avoid major decisions and commitments'},
+  {cn:'氐',en:'Root',good:false,desc:'Caution for travel and new beginnings'},
+  {cn:'房',en:'Room',good:true,desc:'Excellent for social events, business, and partnerships'},
+  {cn:'心',en:'Heart',good:false,desc:'Inauspicious — avoid confrontation and major moves'},
+  {cn:'尾',en:'Tail',good:true,desc:'Good for construction, ceremonies, and new projects'},
+  {cn:'箕',en:'Basket',good:true,desc:'Auspicious for wealth activities and networking'},
+  {cn:'斗',en:'Dipper',good:false,desc:'Avoid travel and risky activities today'},
+  {cn:'牛',en:'Ox',good:false,desc:'Inauspicious for most activities — rest day'},
+  {cn:'女',en:'Girl',good:false,desc:'Caution — avoid important social and financial moves'},
+  {cn:'虚',en:'Void',good:false,desc:'Inauspicious — a day for quiet reflection only'},
+  {cn:'危',en:'Rooftop',good:false,desc:'Avoid heights, travel, and risky ventures'},
+  {cn:'室',en:'Encampment',good:true,desc:'Good for construction, new projects, and ceremonies'},
+  {cn:'壁',en:'Wall',good:true,desc:'Auspicious for study, planning, and starting businesses'},
+  {cn:'奎',en:'Legs',good:false,desc:'Caution for travel and new relationships'},
+  {cn:'娄',en:'Bond',good:true,desc:'Good for social events, weddings, and partnerships'},
+  {cn:'胃',en:'Stomach',good:true,desc:'Auspicious for wealth and storage activities'},
+  {cn:'昴',en:'Pleiades',good:false,desc:'Inauspicious — avoid major moves today'},
+  {cn:'毕',en:'Net',good:true,desc:'Good for networking and social activities'},
+  {cn:'觜',en:'Beak',good:false,desc:'Inauspicious for most activities today'},
+  {cn:'参',en:'Orion',good:false,desc:'Caution — avoid confrontations and legal matters'},
+  {cn:'井',en:'Well',good:true,desc:'Auspicious for business and wealth accumulation'},
+  {cn:'鬼',en:'Ghost',good:false,desc:'Inauspicious — a day of caution and reflection'},
+  {cn:'柳',en:'Willow',good:false,desc:'Avoid important activities — unfavourable energy'},
+  {cn:'星',en:'Star',good:false,desc:'Inauspicious for most — avoid public activities'},
+  {cn:'张',en:'Extended Net',good:true,desc:'Good for social events, ceremonies, and networking'},
+  {cn:'翼',en:'Wings',good:false,desc:'Caution for travel and new ventures today'},
+  {cn:'轸',en:'Chariot',good:true,desc:'Auspicious for travel and starting new journeys'}
+];
+
+const SHEN_SHA_DATA={
+  yearly:{
+    0:[{cn:'劫煞',en:'Robbery Sha',good:false,desc:'Heightened risk of loss, theft, or betrayal — exercise caution in financial dealings'}],
+    3:[{cn:'天德',en:'Heavenly Virtue',good:true,desc:'Extremely auspicious — heavenly blessing on all activities undertaken today'}],
+    6:[{cn:'将星',en:'General Star',good:true,desc:'Leadership energy — excellent for taking charge and making bold decisions'}],
+    9:[{cn:'华盖',en:'Canopy Star',good:false,desc:'Solitary energy — better for spiritual activities than social ones'}]
+  },
+  monthly:{
+    0:[{cn:'月德合',en:'Monthly Virtue Combo',good:true,desc:'Harmonious social energy — excellent for meetings, partnerships, and networking'}],
+    2:[{cn:'天医',en:'Heavenly Doctor',good:true,desc:'Healing energy — favourable for health matters and recovery'}],
+    4:[{cn:'福星',en:'Fortune Star',good:true,desc:'Wealth luck is amplified — good day for financial activities and investments'}],
+    6:[{cn:'天喜',en:'Heavenly Joy',good:true,desc:'Celebratory energy — excellent for social events, romance, and good news'}],
+    8:[{cn:'红鸾',en:'Red Phoenix',good:true,desc:'Romance and relationship energy — favourable for love and social charm'}],
+    10:[{cn:'孤辰',en:'Lonely Star',good:false,desc:'Isolated energy — avoid social activities and important meetings today'}]
+  },
+  daily:{
+    0:[{cn:'日德',en:'Day Virtue',good:true,desc:'Virtuous day energy — general auspiciousness for most activities'}],
+    1:[{cn:'天乙',en:'Heavenly Noble',good:true,desc:'Powerful auspicious star — heavenly assistance on all endeavours'}],
+    3:[{cn:'文昌',en:'Literary Star',good:true,desc:'Intelligence and communication enhanced — excellent for negotiation and writing'}],
+    5:[{cn:'太阴',en:'Moon Star',good:true,desc:'Yin energy enhanced — good for intuitive decisions and relationships'}],
+    7:[{cn:'羊刃',en:'Goat Blade',good:false,desc:'Sharp and aggressive energy — avoid confrontation and risky activities'}],
+    9:[{cn:'白虎',en:'White Tiger',good:false,desc:'Aggressive metal energy — caution in all dealings; avoid arguments'}],
+    11:[{cn:'玄武',en:'Black Tortoise',good:false,desc:'Deceptive energy present — be careful of dishonesty in dealings today'}]
+  }
 };
 
-let bazi=null,curYear=2026,curMon=new Date().getMonth();
+const NOBLE_PAIRS=[[0,2],[1,11],[2,10],[3,9],[4,8],[5,7],[6,6],[7,5],[8,4],[9,3]];
+
+function getShenSha(yearBr,monthBr,dayBr,yearStem){
+  const stars=[];
+  if(SHEN_SHA_DATA.yearly[yearBr])stars.push(...SHEN_SHA_DATA.yearly[yearBr]);
+  if(SHEN_SHA_DATA.monthly[monthBr])stars.push(...SHEN_SHA_DATA.monthly[monthBr]);
+  if(SHEN_SHA_DATA.daily[dayBr])stars.push(...SHEN_SHA_DATA.daily[dayBr]);
+  const nobleFor=NOBLE_PAIRS[yearStem];
+  if(nobleFor&&(dayBr===nobleFor[0]||dayBr===nobleFor[1])){
+    stars.push({cn:'天乙贵人',en:'Heavenly Noble Helper',good:true,desc:'Most powerful auspicious star — heaven-sent assistance and protection today. Excellent for all important activities.'});
+  }
+  const travelBranches={0:6,1:3,2:0,3:9,4:6,5:3,6:0,7:9,8:6,9:3,10:0,11:9};
+  if(travelBranches[yearBr]===dayBr)stars.push({cn:'驿马',en:'Travelling Horse',good:true,desc:'Movement and change favoured — ideal for travel, new opportunities, and relocation'});
+  const disasterBranches={0:9,1:6,2:3,3:0,4:9,5:6,6:3,7:0,8:9,9:6,10:3,11:0};
+  if(disasterBranches[yearBr]===dayBr)stars.push({cn:'灾煞',en:'Calamity Sha',good:false,desc:'Accident-prone energy — avoid risky physical activities and dangerous situations'});
+  return stars;
+}
+
+function getTaiSuiClash(yearBr,dayBr){
+  return((dayBr-yearBr+12)%12)===6;
+}
+function getSanSha(yearBr,dayBr){
+  const map={0:[3,4,5],1:[6,7,8],2:[9,10,11],3:[0,1,2],4:[3,4,5],5:[6,7,8],6:[9,10,11],7:[0,1,2],8:[3,4,5],9:[6,7,8],10:[9,10,11],11:[0,1,2]};
+  return(map[yearBr]||[]).includes(dayBr);
+}
+function getMansionIdx(date){
+  const ref=new Date(Date.UTC(2000,0,7));
+  const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));
+  return((Math.round((d-ref)/86400000)%28)+28)%28;
+}
+
+const ACTIVITIES=[
+  {id:'all',label:'All days'},
+  {id:'invest',label:'Investments',stars_need:['Fortune Star','Heavenly Noble Helper','Day Virtue'],stars_avoid:['Robbery Sha','White Tiger','Black Tortoise','Calamity Sha'],officers_good:[8,9,4],desc:'Best on Success or Receive days with Fortune Star or Heavenly Noble Helper active. Avoid Robbery Sha and White Tiger days — risk of loss is elevated.'},
+  {id:'career',label:'Career moves',stars_need:['Heavenly Noble Helper','General Star','Literary Star'],stars_avoid:['Goat Blade','Calamity Sha'],officers_good:[0,8,10,5],desc:'Best on Establish or Success days with General Star or Heavenly Noble Helper. Avoid Goat Blade days — aggressive energy can backfire in career situations.'},
+  {id:'renyuan',label:'Renyuan 人缘',stars_need:['Red Phoenix','Heavenly Joy','Monthly Virtue Combo'],stars_avoid:['Lonely Star','Black Tortoise'],officers_good:[8,9,10,3],desc:'Best when Red Phoenix or Heavenly Joy is active — your natural charisma is amplified. Avoid Lonely Star days when personal magnetism is suppressed.'},
+  {id:'network',label:'Networking',stars_need:['Heavenly Joy','Monthly Virtue Combo','Heavenly Noble Helper'],stars_avoid:['Lonely Star','Calamity Sha'],officers_good:[8,10,3,9],desc:'Best on Open or Success days with Heavenly Joy or Monthly Virtue Combo active. Lonely Star days are especially unfavourable for group events and new connections.'},
+  {id:'conflict',label:'Conflict resolution',stars_need:['Heavenly Doctor','Day Virtue','Monthly Virtue Combo'],stars_avoid:['Goat Blade','White Tiger','Black Tortoise'],officers_good:[3,4,1],desc:'Best on Balance or Stable days. Avoid Goat Blade and White Tiger — these aggressive energies worsen disputes rather than resolve them.'},
+  {id:'gamble',label:'Gambling',stars_need:['Fortune Star','Heavenly Noble Helper','Travelling Horse'],stars_avoid:['Robbery Sha','Calamity Sha','Black Tortoise'],officers_good:[8,9,6],desc:'Best on Success or Receive days with Fortune Star active and a strong personal score. Never play on Robbery Sha days — risk of significant loss is elevated.'},
+  {id:'compete',label:'Competitions',stars_need:['General Star','Heavenly Noble Helper','Travelling Horse'],stars_avoid:['Calamity Sha','Goat Blade'],officers_good:[8,5,0],desc:'Best with General Star or Heavenly Noble Helper active on Success or Execute days. Calamity Sha days carry accident-prone energy — avoid physical competitions.'},
+  {id:'travel',label:'Travel',stars_need:['Travelling Horse','Day Virtue'],stars_avoid:['Calamity Sha','White Tiger','Robbery Sha'],officers_good:[8,0,1],desc:'Travelling Horse is the ideal star for journeys. Avoid Danger officer and Calamity Sha days — accident risk is elevated for travel specifically.'},
+  {id:'new',label:'Starting something new',stars_need:['Heavenly Noble Helper','Day Virtue','General Star'],stars_avoid:['Calamity Sha','Robbery Sha'],officers_good:[0,10,8],desc:'Best on Establish or Open days. Heavenly Noble Helper is the strongest backing for new initiatives — heaven-level support for what you begin today.'},
+  {id:'spiritual',label:'Visiting a master',stars_need:['Heavenly Noble','Canopy Star','Day Virtue','Heavenly Noble Helper'],stars_avoid:['Black Tortoise','White Tiger'],officers_good:[8,1,4,3],desc:'Canopy Star days are especially suited to metaphysical and spiritual activities. Heavenly Noble Helper gives the visit extra weight and clarity.'}
+];
+
+const DM={
+  '甲':['Jiǎ Yang Wood','Strong-willed pioneer with natural leadership. High integrity and direct communication. Thrives with clear goals and a defined path forward.'],
+  '乙':['Yǐ Yin Wood','Adaptable and charming diplomat. Bends without breaking — resilient under pressure. Excellent at reading people and navigating complexity.'],
+  '丙':['Bǐng Yang Fire','Radiant and generous. Natural communicator who lights up any room. Excellent at inspiring others — watch for burning out from giving too much.'],
+  '丁':['Dīng Yin Fire','Thoughtful and persistent. Sharp intuition and artistic depth. A quiet candle that outlasts the bonfire — steady, warm, and enduring.'],
+  '戊':['Wù Yang Earth','Dependable mountain. Stable, patient, and protective. People naturally rely on you — can be slow to change but always reliable.'],
+  '己':['Jǐ Yin Earth','Nurturing and meticulous. Warm-hearted planner with genuine care for others. Excels at detail-oriented work and building lasting foundations.'],
+  '庚':['Gēng Yang Metal','Bold and decisive with strong principles. A natural problem-solver who cuts through confusion. Can be blunt — directness is a strength and a challenge.'],
+  '辛':['Xīn Yin Metal','Refined and perceptive. Perfectionist streak with aesthetic sensibility. Feels things deeply and intensely — high standards in everything.'],
+  '壬':['Rén Yang Water','Visionary and resourceful. Big-picture thinker who adapts easily to any environment. Can scatter energy across too many directions at once.'],
+  '癸':['Guǐ Yin Water','Intuitive and perceptive. Deep thinker with natural empathy and people-reading ability. Wisdom through stillness — reflective and insightful.']
+};
+
+let bazi=null,curYear=2026,curMon=new Date().getMonth(),curAct='all';
 
 const ySel=document.getElementById('bYear');
 for(let y=2024;y<=2030;y++){const o=document.createElement('option');o.value=y;o.textContent=y;if(y===2026)o.selected=true;ySel.appendChild(o);}
@@ -292,7 +408,6 @@ function calcBazi(dStr,tStr){
 const STEM_COMBOS=[[0,5],[1,6],[2,7],[3,8],[4,9]];
 const BRANCH_CLASHES=[[0,6],[1,7],[2,8],[3,9],[4,10],[5,11]];
 const BRANCH_COMBOS=[[0,11],[1,10],[2,7],[3,8],[4,9],[5,6]];
-
 function stemInt(a,b){for(const p of STEM_COMBOS)if((a===p[0]&&b===p[1])||(a===p[1]&&b===p[0]))return'combo';if(Math.abs(a-b)===5)return'clash';return'neutral';}
 function branchInt(a,b){
   for(const p of BRANCH_CLASHES)if((a===p[0]&&b===p[1])||(a===p[1]&&b===p[0]))return'clash';
@@ -307,8 +422,8 @@ function rateDay(dp,bz){
     if(si==='combo'){score+=2;ints.push({t:'g',d:STEMS[dp.stem]+'–'+STEMS[p.stem]+' stem harmony'})}
     else if(si==='clash'){score-=2;ints.push({t:'b',d:STEMS[dp.stem]+'–'+STEMS[p.stem]+' stem clash'})}
     const bi=branchInt(dp.branch,p.branch);
-    if(bi==='combo'){score+=2;ints.push({t:'g',d:BRANCH_EN[dp.branch].split(' ')[1]+'–'+BRANCH_EN[p.branch].split(' ')[1]+' branch harmony'})}
-    else if(bi==='clash'){score-=3;ints.push({t:'b',d:BRANCH_EN[dp.branch].split(' ')[1]+'–'+BRANCH_EN[p.branch].split(' ')[1]+' branch clash'})}
+    if(bi==='combo'){score+=2;ints.push({t:'g',d:BRANCH_SHORT[dp.branch]+'–'+BRANCH_SHORT[p.branch]+' branch harmony'})}
+    else if(bi==='clash'){score-=3;ints.push({t:'b',d:BRANCH_SHORT[dp.branch]+'–'+BRANCH_SHORT[p.branch]+' branch clash'})}
   }
   const fav=FAVELEM[STEM_ELEM[bz.dm]]||[];
   if(fav.includes(STEM_ELEM[dp.stem]))score+=1;
@@ -319,17 +434,65 @@ function getOfficerIdx(date){
   const d=new Date(date.getFullYear(),date.getMonth(),date.getDate());
   return((Math.round((d-ref)/86400000)%12)+12)%12;
 }
-function synthesise(score,offGood){
+
+function synthesise(score,offGood,stars,hasTaiSui,hasSanSha){
+  if(hasTaiSui)return{cls:'day-caution',vc:'v-caution',label:'⚠ Tai Sui clash',advice:'This day clashes with Tai Sui — the Grand Duke of '+curYear+'. Even a high personal score is dampened. Avoid major decisions, confrontations, and risky activities. Routine work only.'};
+  if(hasSanSha)return{cls:'day-caution',vc:'v-caution',label:'⚠ San Sha',advice:'This day falls within San Sha (Three Killings) for '+curYear+'. Caution advised for new initiatives and physical activities. Lower the stakes today.'};
+  const goodStars=stars.filter(s=>s.good).length;
+  const badStars=stars.filter(s=>!s.good).length;
+  const adj=score+goodStars-badStars;
   const hi=score>=3,lo=score<=-2;
-  if(hi&&offGood)return{cls:'day-strong',vc:'v-strong',label:'Strong day',advice:'Both layers align in your favour. Act boldly — ideal for launches, signing contracts, important meetings, and major commitments.'};
-  if(hi&&!offGood)return{cls:'day-conflict',vc:'v-conflict',label:'Conflicting',advice:'Your personal energy is strong today, but the universal day energy is cautious. Good for personal decisions and financial planning. Avoid public commitments and physical risk.'};
-  if(lo&&!offGood)return{cls:'day-avoid',vc:'v-avoid',label:'Avoid today',advice:'Both your personal score and the universal day energy are unfavourable. Rest, routine admin, and low-stakes tasks only. Save important decisions for another day.'};
-  if(lo&&offGood)return{cls:'day-conflict',vc:'v-conflict',label:'Conflicting',advice:'The universal day is favourable but your chart is clashing with it. Support others rather than initiating. Not your day to lead.'};
-  if(offGood&&score>0)return{cls:'day-good',vc:'v-good',label:'Good day',advice:'A positive day on both layers. Universal energy supports action and your chart cooperates. Suitable for most activities.'};
-  if(offGood&&score===0)return{cls:'day-good',vc:'v-good',label:'Good day',advice:'Universal day energy is favourable. Your chart is neutral — a decent day to move things forward at a measured pace.'};
-  if(!offGood&&score>0)return{cls:'day-caution',vc:'v-caution',label:'Proceed with care',advice:'Your personal energy is slightly positive but the universal day carries caution. Fine for low-stakes activities. Avoid major commitments.'};
-  if(offGood&&score<0)return{cls:'day-caution',vc:'v-caution',label:'Proceed with care',advice:'Universal day is decent but your chart is slightly resistant. Follow up on existing work rather than starting fresh initiatives.'};
-  return{cls:'day-rest',vc:'v-rest',label:'Rest day',advice:'A neutral day across both layers. Fine for routine work, admin, and quiet progress. Save important moves for stronger days.'};
+  if(adj>=4&&offGood)return{cls:'day-strong',vc:'v-strong',label:'Strong day',advice:'All three layers align — personal score, day officer, and Shen Sha stars all favour action. Act boldly. This is your best type of day for important decisions.'};
+  if(adj>=2&&offGood)return{cls:'day-good',vc:'v-good',label:'Good day',advice:'Positive energy across your personal score and the day officer. A reliable day to move things forward with confidence.'};
+  if(hi&&!offGood)return{cls:'day-conflict',vc:'v-conflict',label:'Conflicting',advice:'Your personal chart energy is strong but the universal day and stars are cautious. Good for personal and private decisions — avoid public commitments and physical risk.'};
+  if(lo&&!offGood)return{cls:'day-avoid',vc:'v-avoid',label:'Avoid today',advice:'Personal score, day officer, and stars all point negative. Rest and routine tasks only. Save important moves for a better day.'};
+  if(lo&&offGood)return{cls:'day-conflict',vc:'v-conflict',label:'Conflicting',advice:'The universal day energy is decent but your chart is clashing with it. Let others lead today. Support roles rather than initiating.'};
+  if(offGood&&score>=0)return{cls:'day-good',vc:'v-good',label:'Good day',advice:'Universal day energy is favourable. Your personal chart is cooperating — a decent day to act at a measured pace.'};
+  if(!offGood&&score>0)return{cls:'day-caution',vc:'v-caution',label:'Proceed with care',advice:'Your personal energy is slightly positive but the universal day is cautious. Fine for low-stakes activities and quiet planning.'};
+  if(offGood&&score<0)return{cls:'day-caution',vc:'v-caution',label:'Proceed with care',advice:'The day officer is decent but your chart is slightly resistant. Follow up on existing work rather than launching fresh initiatives.'};
+  return{cls:'day-rest',vc:'v-rest',label:'Rest day',advice:'Neutral across all layers. Fine for routine, admin, and quiet progress. Save important moves for stronger days.'};
+}
+
+function rateActivity(offIdx,stars,actId){
+  if(actId==='all')return null;
+  const act=ACTIVITIES.find(a=>a.id===actId);
+  if(!act)return null;
+  const sn=stars.map(s=>s.en);
+  const hasGood=act.stars_need.some(s=>sn.includes(s));
+  const hasBad=act.stars_avoid.some(s=>sn.includes(s));
+  const goodOff=act.officers_good.includes(offIdx);
+  if(hasBad)return{rating:'avoid',cls:'act-avoid'};
+  if(hasGood&&goodOff)return{rating:'excellent',cls:'act-result'};
+  if(hasGood||goodOff)return{rating:'good',cls:'act-result'};
+  return{rating:'neutral',cls:''};
+}
+
+function getHourRatings(dp,bz){
+  const times=['23–01','01–03','03–05','05–07','07–09','09–11','11–13','13–15','15–17','17–19','19–21','21–23'];
+  return Array.from({length:12},(_,bi)=>{
+    const si=((dp.stem%5)*2+bi)%10;
+    let score=0;
+    for(const p of[bz.year,bz.month,bz.day,bz.hour]){
+      const s=stemInt(si,p.stem);if(s==='combo')score+=2;else if(s==='clash')score-=2;
+      const b=branchInt(bi,p.branch);if(b==='combo')score+=2;else if(b==='clash')score-=3;
+    }
+    return{bi,si,score,time:times[bi]};
+  });
+}
+
+function buildActFilter(){
+  const f=document.getElementById('actFilter');f.innerHTML='';
+  ACTIVITIES.forEach(a=>{
+    const btn=document.createElement('button');
+    btn.className='act-btn'+(a.id==='all'?' active':'');
+    btn.textContent=a.label;
+    btn.onclick=()=>{
+      document.querySelectorAll('.act-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');curAct=a.id;renderCal();
+      document.getElementById('detPanel').classList.remove('on');
+    };
+    f.appendChild(btn);
+  });
 }
 
 function calc(){
@@ -342,7 +505,8 @@ function calc(){
   curYear=parseInt(document.getElementById('bYear').value);
   curMon=new Date().getMonth();
   const name=document.getElementById('bName').value.trim();
-  renderDM(name);renderPillars();renderLP(document.getElementById('bGender').value);renderOfficerGuide();renderCal();
+  renderDM(name);renderPillars();renderLP(document.getElementById('bGender').value);
+  buildActFilter();renderCal();buildGuide();
   document.getElementById('resSec').classList.remove('hidden');
   document.getElementById('resSec').scrollIntoView({behavior:'smooth'});
 }
@@ -353,6 +517,7 @@ function renderDM(name){
   document.getElementById('dmName').textContent=(name?name+"'s ":'')+'Day Master: '+info[0];
   document.getElementById('dmDesc').textContent=info[1];
 }
+
 function renderPillars(){
   const labels=['Year','Month','Day','Hour'];
   const ps=[bazi.year,bazi.month,bazi.day,bazi.hour];
@@ -362,131 +527,145 @@ function renderPillars(){
     const elem=STEM_ELEM[p.stem];const col=ELEM_COL[elem];
     el.innerHTML=`<div class="pc-lbl">${labels[i]} pillar</div>
       <div class="pc-cn">${STEMS[p.stem]}${BRANCHES[p.branch]}</div>
-      <div class="pc-en">${STEM_EN[p.stem]}</div>
-      <div class="pc-sub">${BRANCH_EN[p.branch]}</div>
+      <div class="pc-en">${STEM_EN[p.stem]}</div><div class="pc-sub">${BRANCH_EN[p.branch]}</div>
       <span class="eb" style="background:${col}22;color:${col}">${elem}</span>`;
     g.appendChild(el);
   });
 }
+
 function renderLP(gender){
-  const yp=bazi.year;const isYang=yp.stem%2===0;
+  const isYang=bazi.year.stem%2===0;
   const forward=(isYang&&gender==='m')||(!isYang&&gender==='f');
-  const base=bazi.month;
   const nowAge=new Date().getFullYear()-bazi.birthDate.getFullYear();
   const g=document.getElementById('lpGrid');g.innerHTML='';
   for(let i=1;i<=8;i++){
     const offset=forward?i:-i;
-    const si=((base.stem+offset)%10+10)%10;
-    const bi=((base.branch+offset)%12+12)%12;
+    const si=((bazi.month.stem+offset)%10+10)%10;
+    const bi=((bazi.month.branch+offset)%12+12)%12;
     const startAge=i*10-10+8;const endAge=startAge+9;
     const isCur=nowAge>=startAge&&nowAge<=endAge;
+    const col=ELEM_COL[STEM_ELEM[si]];
     const el=document.createElement('div');el.className='lpc'+(isCur?' cur':'');
-    const elem=STEM_ELEM[si];const col=ELEM_COL[elem];
     el.innerHTML=`<div class="lpc-age">Age ${startAge}–${endAge}</div>
       <div class="lpc-cn">${STEMS[si]}${BRANCHES[bi]}</div>
-      <div class="lpc-en" style="color:${col}">${elem}</div>
+      <div class="lpc-en" style="color:${col}">${STEM_ELEM[si]}</div>
       ${isCur?'<div style="font-size:9px;color:#2980b9;margin-top:2px">Current</div>':''}`;
     g.appendChild(el);
   }
 }
-function renderOfficerGuide(){
-  const g=document.getElementById('officerGuide');g.innerHTML='';
-  OFFICERS.forEach(o=>{
-    const row=document.createElement('div');row.className='do-row';
-    row.innerHTML=`<span style="font-size:18px;width:24px;flex-shrink:0">${o.cn}</span>
-      <span style="font-weight:500;width:90px;flex-shrink:0">${o.en}</span>
-      <span style="color:#666;flex:1">${o.desc}</span>
-      <span class="tag ${o.good?'tag-g':'tag-b'}" style="flex-shrink:0;margin:0">${o.good?'Favourable':'Avoid'}</span>`;
-    g.appendChild(row);
-  });
-}
+
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const MONTHS_S=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
 function renderCal(){
   document.getElementById('monLbl').textContent=MONTHS[curMon]+' '+curYear;
-  const g=document.getElementById('calGrid');
-  g.innerHTML='';
+  const g=document.getElementById('calGrid');g.innerHTML='';
   ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d=>{const h=document.createElement('div');h.className='cal-hdr';h.textContent=d;g.appendChild(h);});
   const first=new Date(curYear,curMon,1).getDay();
   const days=new Date(curYear,curMon+1,0).getDate();
   const today=new Date();
+  const yearPillar=getYearPillar(new Date(curYear,5,15));
   for(let i=0;i<first;i++){const e=document.createElement('div');e.className='dc empty';g.appendChild(e);}
   for(let d=1;d<=days;d++){
     const date=new Date(curYear,curMon,d);
     const dp=getDayPillar(date);
+    const mp=getMonthPillar(date);
     const offIdx=getOfficerIdx(date);
     const off=OFFICERS[offIdx];
     const{score,ints}=rateDay(dp,bazi);
-    const syn=synthesise(score,off.good);
+    const mansIdx=getMansionIdx(date);
+    const mansion=MANSIONS[mansIdx];
+    const stars=getShenSha(yearPillar.branch,mp.branch,dp.branch,yearPillar.stem);
+    const hasTaiSui=getTaiSuiClash(yearPillar.branch,dp.branch);
+    const hasSanSha=getSanSha(yearPillar.branch,dp.branch);
+    const syn=synthesise(score,off.good,stars,hasTaiSui,hasSanSha);
+    const actR=rateActivity(offIdx,stars,curAct);
     const isToday=date.toDateString()===today.toDateString();
     const cell=document.createElement('div');
     cell.className='dc '+syn.cls+(isToday?' today-ring':'');
     const offCls=off.good?'off-good':'off-bad';
+    const gStars=stars.filter(s=>s.good).map(s=>s.en.split(' ').slice(0,2).join(' ')).slice(0,2).join(', ');
+    const bStars=stars.filter(s=>!s.good).map(s=>s.en.split(' ')[0]).slice(0,1).join('');
+    let vLabel=syn.label;
+    if(actR&&curAct!=='all'){
+      if(actR.rating==='excellent')vLabel='✦ Excellent';
+      else if(actR.rating==='good')vLabel='Good match';
+      else if(actR.rating==='avoid')vLabel='✕ Avoid';
+    }
     cell.innerHTML=`<div class="dc-num">${d}</div>
       <span class="dc-off ${offCls}">${off.en}</span>
-      <span class="dc-score">score: ${score>0?'+':''}${score}</span>
-      <span class="dc-verdict ${syn.vc}">${syn.label}</span>`;
-    cell.onclick=()=>showDetail(d,date,dp,offIdx,score,ints,syn);
+      <div class="dc-mansion">${mansion.cn} ${mansion.en}</div>
+      ${gStars?`<div class="dc-stars-g">${gStars}</div>`:''}
+      ${bStars?`<div class="dc-stars-b">${bStars}</div>`:''}
+      ${hasTaiSui?'<div class="dc-warn">⚠ Tai Sui</div>':hasSanSha?'<div class="dc-warn">⚠ San Sha</div>':''}
+      <div class="dc-verdict ${syn.vc}">${vLabel}</div>`;
+    cell.onclick=()=>showDetail(d,date,dp,mp,offIdx,score,ints,syn,stars,hasTaiSui,hasSanSha,mansIdx,actR);
     g.appendChild(cell);
   }
 }
-function showDetail(d,date,dp,offIdx,score,ints,syn){
-  const off=OFFICERS[offIdx];
-  const panel=document.getElementById('detPanel');
-  const content=document.getElementById('detContent');
+
+function showDetail(d,date,dp,mp,offIdx,score,ints,syn,stars,hasTaiSui,hasSanSha,mansIdx,actR){
+  const off=OFFICERS[offIdx];const mansion=MANSIONS[mansIdx];
+  const panel=document.getElementById('detPanel');const content=document.getElementById('detContent');
   const bgMap={strong:'#eaf3de',good:'#f0f7e6',caution:'#fef9ed',avoid:'#fcebeb',conflict:'#eef4fc',rest:'#f8f7f4'};
-  const colMap={strong:'#2d5a0e',good:'#2d5a0e',caution:'#7a5c00',avoid:'#791f1f',conflict:'#0c447c',rest:'#555'};
-  const key=syn.label.toLowerCase().replace(' today','').replace(' day','').replace('proceed with care','caution').replace('conflicting','conflict').replace('rest','rest').replace('strong','strong').replace('good','good');
-  const bg=bgMap[key]||'#f8f7f4';
-  const col=colMap[key]||'#1a1a1a';
-  const scoreBarW=Math.min(100,Math.max(0,(score+8)/16*100));
-  const scoreCol=score>=3?'#2d5a0e':score<=-2?'#c0392b':'#888';
-  const intHTML=ints.length===0
-    ?'<span class="tag tag-n">No major Bazi interactions today</span>'
-    :ints.map(i=>`<span class="tag ${i.t==='g'?'tag-g':'tag-b'}">${i.t==='g'?'✦':'✕'} ${i.d}</span>`).join('');
+  const colMap={strong:'#2d5a0e',good:'#2d5a0e',caution:'#7a5c00',avoid:'#791f1f',conflict:'#0c447c',rest:'#333'};
+  const key=syn.cls.replace('day-','').replace(' ','');
+  const bg=bgMap[key]||'#f8f7f4';const col=colMap[key]||'#1a1a1a';
+  const sw=Math.min(100,Math.max(0,(score+8)/16*100));
+  const sc=score>=3?'#2d5a0e':score<=-2?'#c0392b':'#888';
+  const intHTML=ints.length===0?'<span class="tag tag-n">No major chart interactions today</span>':ints.map(i=>`<span class="tag ${i.t==='g'?'tag-g':'tag-b'}">${i.t==='g'?'✦':'✕'} ${i.d}</span>`).join('');
+  const goodS=stars.filter(s=>s.good);const badS=stars.filter(s=>!s.good);
+  const starsHTML=stars.length===0?'<p style="font-size:12px;color:#666">No major Shen Sha stars active today</p>':[...goodS,...badS].map(s=>`<div class="star-row ${s.good?'star-good':'star-bad'}"><span class="star-cn">${s.cn}</span><span class="star-en">${s.en}</span><span class="star-desc">${s.desc}</span></div>`).join('');
+  const hours=getHourRatings(dp,bazi);
+  const hoursHTML=hours.map(h=>{const hc=h.score>=3?'hg':h.score<=-2?'hb':'';const sc2=h.score>=3?'#2d5a0e':h.score<=-2?'#c0392b':'#888';return`<div class="hc ${hc}"><div class="hc-time">${h.time}</div><div class="hc-branch">${STEMS[h.si]}${BRANCHES[h.bi]}</div><div class="hc-en">${BRANCH_SHORT[h.bi]}</div><div class="hc-score" style="color:${sc2};background:${h.score>=3?'#eaf3de':h.score<=-2?'#fcebeb':'#f0f0f0'}">${h.score>0?'+':''}${h.score}</div></div>`;}).join('');
+  const warnHTML=(hasTaiSui||hasSanSha)?`<div class="warn-box"><strong>⚠ Annual Sha Warning</strong>${hasTaiSui?'<br>Clashes with <strong>Tai Sui (太歲)</strong> — the Grand Duke of '+curYear+'. Avoid major decisions, confrontations, and risky activities.':''}${hasSanSha?'<br>Falls within <strong>San Sha (三煞)</strong> — Three Killings for '+curYear+'. Caution for new initiatives and physical activities.':''}</div>`:'';
+  const act=ACTIVITIES.find(a=>a.id===curAct);
+  const actHTML=actR&&curAct!=='all'?`<div class="${actR.cls||'det-box'}" style="margin-bottom:.75rem"><div class="act-result-name">${act?.label} — ${actR.rating.charAt(0).toUpperCase()+actR.rating.slice(1)}</div><div class="act-result-desc">${act?.desc}</div></div>`:'';
   content.innerHTML=`
-    <div class="det-verdict-box" style="background:${bg};color:${col}">
-      <strong>${MONTHS_S[date.getMonth()]} ${d} — ${syn.label}</strong>
-      <p>${syn.advice}</p>
-    </div>
+    <div class="det-verdict" style="background:${bg};color:${col}"><strong>${MONTHS_S[date.getMonth()]} ${d} — ${syn.label}</strong><p>${syn.advice}</p></div>
+    ${warnHTML}${actHTML}
     <div class="det-grid">
-      <div class="det-box">
-        <div class="det-box-label">Universal day officer</div>
-        <div class="det-box-val" style="color:${off.good?'#2d5a0e':'#c0392b'}">${off.cn} ${off.en}</div>
-        <div class="det-box-sub">${off.desc}</div>
-      </div>
-      <div class="det-box">
-        <div class="det-box-label">Your personal score</div>
-        <div class="det-box-val" style="color:${scoreCol}">${score>0?'+':''}${score} points</div>
-        <div class="score-bar"><div class="score-track"><div class="score-fill" style="width:${Math.round(scoreBarW)}%;background:${scoreCol}"></div></div></div>
-        <div class="det-box-sub">${score>=3?'Auspicious for you':score<=-2?'Inauspicious for you':'Neutral for you'}</div>
-      </div>
-      <div class="det-box">
-        <div class="det-box-label">Day pillar</div>
-        <div class="det-box-val">${STEMS[dp.stem]}${BRANCHES[dp.branch]}</div>
-        <div class="det-box-sub">${STEM_EN[dp.stem]} / ${BRANCH_EN[dp.branch]}</div>
-      </div>
-      <div class="det-box">
-        <div class="det-box-label">Your favourable elements</div>
-        <div class="det-box-val" style="color:${ELEM_COL[STEM_ELEM[dp.stem]]}">${STEM_ELEM[dp.stem]} day</div>
-        <div class="det-box-sub">You favour: ${(FAVELEM[STEM_ELEM[bazi.dm]]||[]).join(', ')}</div>
-      </div>
+      <div class="det-box"><div class="dbl">Universal day officer</div><div class="dbv" style="color:${off.good?'#2d5a0e':'#c0392b'}">${off.cn} ${off.en}</div><div class="dbs">${off.desc}</div></div>
+      <div class="det-box"><div class="dbl">Your personal score</div><div class="dbv" style="color:${sc}">${score>0?'+':''}${score} pts · ${score>=3?'Auspicious':score<=-2?'Inauspicious':'Neutral'}</div><div class="score-bar"><div class="score-track"><div class="score-fill" style="width:${Math.round(sw)}%;background:${sc}"></div></div></div></div>
+      <div class="det-box"><div class="dbl">Lunar Mansion</div><div class="dbv">${mansion.cn} ${mansion.en}</div><div class="dbs">${mansion.desc}</div></div>
+      <div class="det-box"><div class="dbl">Day pillar</div><div class="dbv">${STEMS[dp.stem]}${BRANCHES[dp.branch]}</div><div class="dbs">${STEM_EN[dp.stem]} / ${BRANCH_EN[dp.branch]}</div></div>
     </div>
-    <div class="int-wrap">
-      <div class="int-label">Bazi chart interactions</div>
-      <div class="int-list">${intHTML}</div>
-    </div>`;
+    <div class="section-title">Shen Sha stars today</div>
+    <div class="star-list">${starsHTML}</div>
+    <div class="section-title">Chart interactions</div>
+    <div class="int-list">${intHTML}</div>
+    <div class="section-title">Best hours today</div>
+    <div style="font-size:11px;color:#999;margin-bottom:.4rem">Rated against your personal chart — green hours are your strongest windows</div>
+    <div class="hour-grid">${hoursHTML}</div>`;
   panel.classList.add('on');
   panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
+
 function chMon(dir){
   curMon+=dir;
-  if(curMon>11){curMon=0;curYear++;}
-  if(curMon<0){curMon=11;curYear--;}
-  renderCal();
-  document.getElementById('detPanel').classList.remove('on');
+  if(curMon>11){curMon=0;curYear++;}if(curMon<0){curMon=11;curYear--;}
+  renderCal();document.getElementById('detPanel').classList.remove('on');
 }
-renderOfficerGuide();
+
+function buildGuide(){
+  document.getElementById('guideContent').innerHTML=`
+    <div class="guide-section"><h3>The three layers in your calendar</h3><p>Every day synthesises three independent systems: the universal Day Officer (same for everyone), your personal Bazi score (unique to your chart), and Shen Sha stars (classical auspicious and inauspicious stars). The coloured verdict combines all three into one plain-English recommendation.</p></div>
+    <div class="guide-section"><h3>Shen Sha stars (神煞)</h3><p>Classical stars appearing on specific days based on year, month, and day branch interactions. The most powerful auspicious star is Heavenly Noble Helper (天乙贵人) — a day under its influence has heavenly backing for all activities. Fortune Star (福星) amplifies wealth luck. Travelling Horse (驿马) favours movement. Robbery Sha (劫煞) warns of loss risk. White Tiger (白虎) and Black Tortoise (玄武) signal danger and deception.</p></div>
+    <div class="guide-section"><h3>Tai Sui and San Sha warnings</h3><p>Tai Sui (太歲) is the Grand Duke — the ruling branch energy of the year. Days clashing with Tai Sui are flagged with an amber warning. San Sha (三煞) — Three Killings — are three branches carrying destructive energy for the year. Both are universally observed by Bazi practitioners.</p></div>
+    <div class="guide-section"><h3>28 Lunar Mansions (二十八宿)</h3><p>The sky is divided into 28 stations. Each day belongs to one mansion, adding a layer of universal quality — some favour specific activities, others are universally cautious. Shown on each day cell and explained in the detail panel.</p></div>
+    <div class="guide-section"><h3>Activity filter</h3><p>Select an activity above the calendar to re-rate every day for that specific purpose. Each activity has required stars (that amplify suitability) and forbidden stars (that flag risk). The calendar highlights excellent, good, and avoid days for your chosen activity.</p></div>
+    <div class="guide-section"><h3>Hour selection</h3><p>Click any day to see its 12 two-hour blocks rated against your chart. Picking the right hour within a good day significantly strengthens outcomes. Even on a neutral day, a strong personal hour can be a useful window.</p></div>
+    <div class="guide-section"><h3>How the personal score is calculated</h3>
+      <div class="score-explainer">
+        <div class="se-row"><span>Stem harmony (天干合)</span><span style="color:#2d5a0e;font-weight:600">+2 points</span></div>
+        <div class="se-row"><span>Branch harmony (地支合)</span><span style="color:#2d5a0e;font-weight:600">+2 points</span></div>
+        <div class="se-row"><span>Favourable element match</span><span style="color:#2d5a0e;font-weight:600">+1 point</span></div>
+        <div class="se-row"><span>Stem clash</span><span style="color:#c0392b;font-weight:600">−2 points</span></div>
+        <div class="se-row"><span>Branch clash (地支冲)</span><span style="color:#c0392b;font-weight:600">−3 points</span></div>
+      </div>
+      <p style="margin-top:.4rem">Scores of +3 or above are auspicious for you personally. −2 or below are inauspicious. The Shen Sha star bonus then adjusts the overall verdict on top of this base score.</p>
+    </div>`;
+}
 </script>
 </body>
 </html>
