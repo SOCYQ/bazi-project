@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bazi Auspicious Calendar</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f7f4;color:#1a1a1a;min-height:100vh}
+.header{background:#1a1a1a;color:#fff;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.header h1{font-size:16px;font-weight:500;letter-spacing:.3px}
+.header span{font-size:12px;color:#888}
+.container{max-width:780px;margin:0 auto;padding:1.5rem 1rem}
+.card{background:#fff;border-radius:12px;border:1px solid #e8e6e0;padding:1.25rem;margin-bottom:1rem}
+.card-title{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+@media(max-width:500px){.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+.ig{display:flex;flex-direction:column;gap:4px}
+.ig label{font-size:12px;color:#666;font-weight:500}
+.ig input,.ig select{width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;background:#fff;color:#1a1a1a}
+.ig input:focus,.ig select:focus{outline:none;border-color:#1a1a1a}
+.btn{background:#1a1a1a;color:#fff;border:none;border-radius:8px;padding:11px 24px;font-size:14px;font-weight:500;cursor:pointer;width:100%;font-family:inherit;letter-spacing:.2px}
+.btn:hover{background:#333}
+.hidden{display:none}
+.err{color:#c0392b;font-size:13px;padding:6px 0}
+.dm-card{background:#1a1a1a;color:#fff;border-radius:12px;padding:1.25rem;margin-bottom:1rem}
+.dm-cn{font-size:28px;margin-bottom:4px}
+.dm-name{font-size:15px;font-weight:500;margin-bottom:6px}
+.dm-desc{font-size:13px;color:#aaa;line-height:1.6}
+.tabs{display:flex;gap:0;border-bottom:1px solid #e8e6e0;margin-bottom:1rem;overflow-x:auto}
+.tab{padding:9px 16px;font-size:13px;cursor:pointer;color:#888;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;font-family:inherit;background:none;border-top:none;border-left:none;border-right:none}
+.tab.active{color:#1a1a1a;font-weight:500;border-bottom-color:#1a1a1a}
+.tp{display:none}.tp.active{display:block}
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem}
+@media(max-width:500px){.pillars-grid{grid-template-columns:repeat(2,1fr)}}
+.pc{background:#f8f7f4;border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #e8e6e0}
+.pc-lbl{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.pc-cn{font-size:20px;color:#555;margin:2px 0}
+.pc-en{font-size:11px;font-weight:500;color:#1a1a1a;line-height:1.3}
+.pc-sub{font-size:10px;color:#999;margin-top:2px}
+.eb{font-size:10px;padding:2px 7px;border-radius:99px;display:inline-block;margin-top:5px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;color:#666;margin-bottom:.75rem}
+.li{display:flex;align-items:center;gap:5px}
+.ld{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.nav-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.nav-btn{background:none;border:1px solid #ddd;border-radius:8px;padding:7px 16px;font-size:13px;cursor:pointer;color:#1a1a1a;font-family:inherit}
+.nav-btn:hover{background:#f8f7f4}
+.month-lbl{font-size:15px;font-weight:500}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-hdr{font-size:11px;color:#999;text-align:center;padding:4px 0}
+.dc{border-radius:8px;padding:5px 3px;text-align:center;border:1px solid #e8e6e0;cursor:pointer;min-height:80px;display:flex;flex-direction:column;align-items:center;gap:1px;transition:border-color .15s}
+.dc:hover{border-color:#1a1a1a}
+.dc.empty{border:none;background:none;cursor:default}
+.dc-num{font-size:13px;font-weight:600;margin-top:2px}
+.dc-off{font-size:9px;padding:1px 4px;border-radius:3px;margin-top:1px}
+.dc-score{font-size:8px;color:#999;margin-top:1px}
+.dc-verdict{font-size:8px;padding:2px 4px;border-radius:3px;margin-top:auto;margin-bottom:2px;width:calc(100% - 4px);text-align:center;line-height:1.3;font-weight:500}
+.day-strong{background:#eaf3de;border-color:#639922}.day-strong .dc-num{color:#2d5a0e}
+.day-good{background:#f0f7e6;border-color:#97c459}.day-good .dc-num{color:#3b6d11}
+.day-caution{background:#fef9ed;border-color:#f0c040}.day-caution .dc-num{color:#7a5c00}
+.day-avoid{background:#fcebeb;border-color:#e24b4a}.day-avoid .dc-num{color:#791f1f}
+.day-conflict{background:#eef4fc;border-color:#85b7eb}.day-conflict .dc-num{color:#0c447c}
+.day-rest{background:#f8f7f4;border-color:#e8e6e0}.day-rest .dc-num{color:#555}
+.off-good{background:#eaf3de;color:#2d5a0e}
+.off-bad{background:#fcebeb;color:#791f1f}
+.off-neutral{background:#f0f0f0;color:#666}
+.v-strong{background:#2d5a0e;color:#fff}
+.v-good{background:#639922;color:#fff}
+.v-caution{background:#e6a800;color:#fff}
+.v-avoid{background:#c0392b;color:#fff}
+.v-conflict{background:#2980b9;color:#fff}
+.v-rest{background:#888;color:#fff}
+.today-ring{outline:2px solid #1a1a1a;outline-offset:1px}
+.det{background:#fff;border-radius:12px;padding:1.25rem;margin-top:.75rem;border:1px solid #e8e6e0;display:none}
+.det.on{display:block}
+.det-verdict-box{border-radius:10px;padding:1rem;margin-bottom:1rem}
+.det-verdict-box strong{display:block;font-size:16px;margin-bottom:6px}
+.det-verdict-box p{font-size:13px;line-height:1.6}
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
+@media(max-width:500px){.det-grid{grid-template-columns:1fr}}
+.det-box{background:#f8f7f4;border:1px solid #e8e6e0;border-radius:8px;padding:.75rem}
+.det-box-label{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.det-box-val{font-size:14px;font-weight:500;color:#1a1a1a}
+.det-box-sub{font-size:11px;color:#666;margin-top:3px;line-height:1.4}
+.int-wrap{margin-top:.5rem}
+.int-label{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.int-list{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11px;padding:3px 9px;border-radius:99px;display:inline-block}
+.tag-g{background:#eaf3de;color:#2d5a0e}
+.tag-b{background:#fcebeb;color:#791f1f}
+.tag-n{background:#f0f0f0;color:#666}
+.score-bar{display:flex;align-items:center;gap:8px;margin-top:6px}
+.score-track{flex:1;height:4px;background:#e8e6e0;border-radius:2px;overflow:hidden}
+.score-fill{height:100%;border-radius:2px}
+.lp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:6px;margin:1rem 0}
+.lpc{background:#f8f7f4;border-radius:10px;padding:8px;border:1px solid #e8e6e0;text-align:center}
+.lpc.cur{border-color:#2980b9;background:#eef4fc}
+.lpc-age{font-size:10px;color:#999}
+.lpc-cn{font-size:16px;color:#555;margin:3px 0}
+.lpc-en{font-size:11px;font-weight:500}
+.do-row{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid #f0f0f0;font-size:12px;align-items:flex-start}
+.do-row:last-child{border:none}
+.score-explainer{display:flex;flex-direction:column;gap:2px;margin:.5rem 0}
+.se-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0f0f0;font-size:12px}
+.se-row:last-child{border:none}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Bazi Auspicious Calendar</h1>
+  <span>Personal date selection</span>
+</div>
+
+<div class="container">
+
+  <div class="card" id="inputCard">
+    <div class="card-title">Your birth details</div>
+    <div class="grid3">
+      <div class="ig"><label>Birth date</label><input type="date" id="bDate" value="1999-08-27"></div>
+      <div class="ig"><label>Birth time</label><input type="time" id="bTime" value="15:54"></div>
+      <div class="ig"><label>Gender</label><select id="bGender"><option value="m">Male</option><option value="f">Female</option></select></div>
+    </div>
+    <div class="grid2">
+      <div class="ig"><label>Calendar year</label><select id="bYear"></select></div>
+      <div class="ig"><label>Name (optional)</label><input type="text" id="bName" placeholder="For display only"></div>
+    </div>
+    <button class="btn" onclick="calc()">Calculate my auspicious calendar</button>
+    <div class="err hidden" id="errMsg"></div>
+  </div>
+
+  <div id="resSec" class="hidden">
+    <div class="dm-card">
+      <div class="dm-cn" id="dmCn"></div>
+      <div class="dm-name" id="dmName"></div>
+      <div class="dm-desc" id="dmDesc"></div>
+    </div>
+
+    <div class="card" style="padding-bottom:.5rem">
+      <div class="tabs">
+        <button class="tab active" onclick="sw('calendar',this)">Calendar</button>
+        <button class="tab" onclick="sw('pillars',this)">My four pillars</button>
+        <button class="tab" onclick="sw('luckpillars',this)">Luck pillars</button>
+        <button class="tab" onclick="sw('guide',this)">Reading guide</button>
+      </div>
+
+      <div class="tp active" id="tp-calendar">
+        <div class="legend">
+          <div class="li"><div class="ld" style="background:#2d5a0e"></div>Strong day — act boldly</div>
+          <div class="li"><div class="ld" style="background:#639922"></div>Good day — proceed</div>
+          <div class="li"><div class="ld" style="background:#e6a800"></div>Proceed with care</div>
+          <div class="li"><div class="ld" style="background:#c0392b"></div>Avoid major decisions</div>
+          <div class="li"><div class="ld" style="background:#2980b9"></div>Conflicting signals</div>
+          <div class="li"><div class="ld" style="background:#888"></div>Rest / routine only</div>
+        </div>
+        <div class="nav-row">
+          <button class="nav-btn" onclick="chMon(-1)">← prev</button>
+          <span class="month-lbl" id="monLbl"></span>
+          <button class="nav-btn" onclick="chMon(1)">next →</button>
+        </div>
+        <div class="cal-grid" id="calGrid">
+          <div class="cal-hdr">Sun</div><div class="cal-hdr">Mon</div><div class="cal-hdr">Tue</div>
+          <div class="cal-hdr">Wed</div><div class="cal-hdr">Thu</div><div class="cal-hdr">Fri</div><div class="cal-hdr">Sat</div>
+        </div>
+        <div class="det" id="detPanel"><div id="detContent"></div></div>
+      </div>
+
+      <div class="tp" id="tp-pillars">
+        <div class="pillars-grid" id="pillarsGrid"></div>
+        <p style="font-size:12px;color:#666;line-height:1.7">Your <strong>Day Master</strong> (the day stem) represents your core self. The four pillars together show the elemental energies present at your birth — their balance shapes personality, strengths, and the types of energy you naturally attract or need.</p>
+      </div>
+
+      <div class="tp" id="tp-luckpillars">
+        <p style="font-size:13px;color:#666;margin-bottom:.75rem;line-height:1.6">Luck Pillars (大運 Dà Yùn) are 10-year energy cycles that overlay your birth chart. Each pillar brings a different elemental energy into your life. Your current pillar is highlighted in blue.</p>
+        <div class="lp-grid" id="lpGrid"></div>
+      </div>
+
+      <div class="tp" id="tp-guide">
+        <p style="font-size:13px;font-weight:500;margin-bottom:.5rem">The two layers explained</p>
+        <p style="font-size:13px;color:#666;line-height:1.7;margin-bottom:1rem">Every day has two independent ratings. The <strong>Day Officer</strong> is universal — identical for every person on earth. Your <strong>personal score</strong> is unique to your Bazi chart. The coloured verdict synthesises both into one recommendation.</p>
+
+        <p style="font-size:13px;font-weight:500;margin-bottom:.5rem">The six verdicts</p>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#2d5a0e;color:#fff;white-space:nowrap;flex-shrink:0">Strong day</span><span style="color:#666">Universal officer is favourable AND personal score is high. Act boldly.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#639922;color:#fff;white-space:nowrap;flex-shrink:0">Good day</span><span style="color:#666">One layer is positive with no major negatives. Decent day to move things forward.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#e6a800;color:#fff;white-space:nowrap;flex-shrink:0">Proceed with care</span><span style="color:#666">Mixed signals — one layer positive, the other cautious. Low-stakes activities only.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#c0392b;color:#fff;white-space:nowrap;flex-shrink:0">Avoid today</span><span style="color:#666">Both layers are negative. Rest and routine tasks only.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#2980b9;color:#fff;white-space:nowrap;flex-shrink:0">Conflicting</span><span style="color:#666">Officer and personal score disagree. Personal matters only — avoid public commitments.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:12px"><span style="padding:3px 9px;border-radius:3px;background:#888;color:#fff;white-space:nowrap;flex-shrink:0">Rest day</span><span style="color:#666">Neutral across both layers. Fine for routine and admin.</span></div>
+        </div>
+
+        <p style="font-size:13px;font-weight:500;margin-bottom:.5rem">The 12 Day Officers — universal for everyone</p>
+        <div id="officerGuide" style="margin-bottom:1.25rem"></div>
+
+        <p style="font-size:13px;font-weight:500;margin-bottom:.5rem">How the personal score is calculated</p>
+        <p style="font-size:12px;color:#666;line-height:1.7;margin-bottom:.5rem">Your 8 birth characters are compared against that day's Stem + Branch pair. Each interaction is scored:</p>
+        <div class="score-explainer">
+          <div class="se-row"><span>Stem harmony (天干合)</span><span style="color:#2d5a0e;font-weight:500">+2 points</span></div>
+          <div class="se-row"><span>Branch harmony (地支合)</span><span style="color:#2d5a0e;font-weight:500">+2 points</span></div>
+          <div class="se-row"><span>Favourable element match</span><span style="color:#2d5a0e;font-weight:500">+1 point</span></div>
+          <div class="se-row"><span>Stem clash</span><span style="color:#c0392b;font-weight:500">−2 points</span></div>
+          <div class="se-row"><span>Branch clash (地支冲)</span><span style="color:#c0392b;font-weight:500">−3 points</span></div>
+        </div>
+        <p style="font-size:12px;color:#666;line-height:1.7;margin-top:.5rem">Typical scores range from about −6 to +7. Scores of +3 or above are auspicious; −2 or below are inauspicious.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;font-size:11px;color:#bbb;margin-top:1.5rem;padding-bottom:1rem">
+    Calculations based on traditional Bazi (八字) date selection methodology.<br>For personal guidance only.
+  </div>
+</div>
+
+<script>
+const STEMS=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+const BRANCHES=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+const STEM_EN=['Jiǎ Wood+','Yǐ Wood−','Bǐng Fire+','Dīng Fire−','Wù Earth+','Jǐ Earth−','Gēng Metal+','Xīn Metal−','Rén Water+','Guǐ Water−'];
+const BRANCH_EN=['Zǐ Rat','Chǒu Ox','Yín Tiger','Mǎo Rabbit','Chén Dragon','Sì Snake','Wǔ Horse','Wèi Goat','Shēn Monkey','Yǒu Rooster','Xū Dog','Hài Pig'];
+const STEM_ELEM=['Wood','Wood','Fire','Fire','Earth','Earth','Metal','Metal','Water','Water'];
+const ELEM_COL={Wood:'#639922',Fire:'#c0392b',Earth:'#b7770d',Metal:'#7f8c8d',Water:'#2980b9'};
+const FAVELEM={Wood:['Water','Wood'],Fire:['Wood','Fire'],Earth:['Fire','Earth'],Metal:['Earth','Metal'],Water:['Metal','Water']};
+const OFFICERS=[
+  {cn:'建',en:'Establish',good:true,desc:'Starting new ventures, business launches, beginning construction'},
+  {cn:'除',en:'Remove',good:true,desc:'Clearing clutter, ending bad habits, medical treatments, clean breaks'},
+  {cn:'满',en:'Full',good:false,desc:'Avoid major decisions — energy is excessive and unstable today'},
+  {cn:'平',en:'Balance',good:true,desc:'Negotiations, resolving disputes, finding middle ground'},
+  {cn:'定',en:'Stable',good:true,desc:'Signing contracts, moving house, making long-term commitments'},
+  {cn:'执',en:'Execute',good:true,desc:'Taking decisive action, pursuing important goals'},
+  {cn:'破',en:'Destruction',good:false,desc:'Universally inauspicious — avoid all major activities'},
+  {cn:'危',en:'Danger',good:false,desc:'Avoid risky activities, travel, heights, and water'},
+  {cn:'成',en:'Success',good:true,desc:'Excellent for almost everything — one of the strongest day types'},
+  {cn:'收',en:'Receive',good:true,desc:'Collecting payments, receiving gifts, harvesting results'},
+  {cn:'开',en:'Open',good:true,desc:'Grand openings, new beginnings, first meetings'},
+  {cn:'闭',en:'Close',good:false,desc:'Rest and consolidation — not suitable for launches or new starts'}
+];
+const DM={
+  '甲':['Jiǎ Yang Wood','Strong-willed pioneer with natural leadership. High integrity and direct communication. Thrives with clear goals.'],
+  '乙':['Yǐ Yin Wood','Adaptable and charming diplomat. Bends without breaking — resilient under pressure. Excellent at reading people.'],
+  '丙':['Bǐng Yang Fire','Radiant and generous. Natural communicator who lights up any room. Watch for burning out from giving too much.'],
+  '丁':['Dīng Yin Fire','Thoughtful and persistent. Sharp intuition and artistic depth. A quiet candle that outlasts the bonfire.'],
+  '戊':['Wù Yang Earth','Dependable mountain. Stable, patient, and protective. People naturally rely on you.'],
+  '己':['Jǐ Yin Earth','Nurturing and meticulous. Warm-hearted planner with genuine care for others. Excels at detail-oriented work.'],
+  '庚':['Gēng Yang Metal','Bold and decisive with strong principles. A natural problem-solver who cuts through confusion.'],
+  '辛':['Xīn Yin Metal','Refined and perceptive. Perfectionist streak with aesthetic sensibility. Feels things deeply.'],
+  '壬':['Rén Yang Water','Visionary and resourceful. Big-picture thinker who adapts easily to any environment.'],
+  '癸':['Guǐ Yin Water','Intuitive and perceptive. Deep thinker with natural empathy. Wisdom through stillness.']
+};
+
+let bazi=null,curYear=2026,curMon=new Date().getMonth();
+
+const ySel=document.getElementById('bYear');
+for(let y=2024;y<=2030;y++){const o=document.createElement('option');o.value=y;o.textContent=y;if(y===2026)o.selected=true;ySel.appendChild(o);}
+
+function sw(id,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tp').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tp-'+id).classList.add('active');
+}
+
+function dayNum(date){
+  const ref=new Date(Date.UTC(1924,0,1));
+  const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));
+  return Math.round((d-ref)/86400000);
+}
+function getDayPillar(date){const n=dayNum(date);return{stem:((n%10)+10)%10,branch:((n%12)+12)%12};}
+function getYearPillar(date){let y=date.getFullYear();if(date<new Date(y,1,4))y--;return{stem:((y-4)%10+10)%10,branch:((y-4)%12+12)%12};}
+function getMonthPillar(date){
+  const st=[4,4,6,5,6,6,7,7,8,8,7,7];
+  let m=date.getMonth(),mi=m;
+  if(date.getDate()<st[m])mi=(m-1+12)%12;
+  const yp=getYearPillar(date);
+  return{stem:((yp.stem%5)*2+mi)%10,branch:(mi+2)%12};
+}
+function getHourPillar(hr,mn,ds){
+  const h=hr+mn/60;
+  let bi=h>=23||h<1?0:Math.floor((h+1)/2);
+  return{stem:((ds%5)*2+bi)%10,branch:bi};
+}
+function calcBazi(dStr,tStr){
+  const[y,m,d]=dStr.split('-').map(Number);
+  const[hr,mn]=tStr.split(':').map(Number);
+  const date=new Date(y,m-1,d);
+  const yp=getYearPillar(date);
+  const mp=getMonthPillar(date);
+  const dp=getDayPillar(date);
+  const hp=getHourPillar(hr,mn,dp.stem);
+  return{year:yp,month:mp,day:dp,hour:hp,dm:dp.stem,birthDate:date};
+}
+
+const STEM_COMBOS=[[0,5],[1,6],[2,7],[3,8],[4,9]];
+const BRANCH_CLASHES=[[0,6],[1,7],[2,8],[3,9],[4,10],[5,11]];
+const BRANCH_COMBOS=[[0,11],[1,10],[2,7],[3,8],[4,9],[5,6]];
+
+function stemInt(a,b){for(const p of STEM_COMBOS)if((a===p[0]&&b===p[1])||(a===p[1]&&b===p[0]))return'combo';if(Math.abs(a-b)===5)return'clash';return'neutral';}
+function branchInt(a,b){
+  for(const p of BRANCH_CLASHES)if((a===p[0]&&b===p[1])||(a===p[1]&&b===p[0]))return'clash';
+  for(const p of BRANCH_COMBOS)if((a===p[0]&&b===p[1])||(a===p[1]&&b===p[0]))return'combo';
+  return'neutral';
+}
+function rateDay(dp,bz){
+  const ps=[bz.year,bz.month,bz.day,bz.hour];
+  let score=0;const ints=[];
+  for(const p of ps){
+    const si=stemInt(dp.stem,p.stem);
+    if(si==='combo'){score+=2;ints.push({t:'g',d:STEMS[dp.stem]+'–'+STEMS[p.stem]+' stem harmony'})}
+    else if(si==='clash'){score-=2;ints.push({t:'b',d:STEMS[dp.stem]+'–'+STEMS[p.stem]+' stem clash'})}
+    const bi=branchInt(dp.branch,p.branch);
+    if(bi==='combo'){score+=2;ints.push({t:'g',d:BRANCH_EN[dp.branch].split(' ')[1]+'–'+BRANCH_EN[p.branch].split(' ')[1]+' branch harmony'})}
+    else if(bi==='clash'){score-=3;ints.push({t:'b',d:BRANCH_EN[dp.branch].split(' ')[1]+'–'+BRANCH_EN[p.branch].split(' ')[1]+' branch clash'})}
+  }
+  const fav=FAVELEM[STEM_ELEM[bz.dm]]||[];
+  if(fav.includes(STEM_ELEM[dp.stem]))score+=1;
+  return{score,ints};
+}
+function getOfficerIdx(date){
+  const ref=new Date(2024,0,7);
+  const d=new Date(date.getFullYear(),date.getMonth(),date.getDate());
+  return((Math.round((d-ref)/86400000)%12)+12)%12;
+}
+function synthesise(score,offGood){
+  const hi=score>=3,lo=score<=-2;
+  if(hi&&offGood)return{cls:'day-strong',vc:'v-strong',label:'Strong day',advice:'Both layers align in your favour. Act boldly — ideal for launches, signing contracts, important meetings, and major commitments.'};
+  if(hi&&!offGood)return{cls:'day-conflict',vc:'v-conflict',label:'Conflicting',advice:'Your personal energy is strong today, but the universal day energy is cautious. Good for personal decisions and financial planning. Avoid public commitments and physical risk.'};
+  if(lo&&!offGood)return{cls:'day-avoid',vc:'v-avoid',label:'Avoid today',advice:'Both your personal score and the universal day energy are unfavourable. Rest, routine admin, and low-stakes tasks only. Save important decisions for another day.'};
+  if(lo&&offGood)return{cls:'day-conflict',vc:'v-conflict',label:'Conflicting',advice:'The universal day is favourable but your chart is clashing with it. Support others rather than initiating. Not your day to lead.'};
+  if(offGood&&score>0)return{cls:'day-good',vc:'v-good',label:'Good day',advice:'A positive day on both layers. Universal energy supports action and your chart cooperates. Suitable for most activities.'};
+  if(offGood&&score===0)return{cls:'day-good',vc:'v-good',label:'Good day',advice:'Universal day energy is favourable. Your chart is neutral — a decent day to move things forward at a measured pace.'};
+  if(!offGood&&score>0)return{cls:'day-caution',vc:'v-caution',label:'Proceed with care',advice:'Your personal energy is slightly positive but the universal day carries caution. Fine for low-stakes activities. Avoid major commitments.'};
+  if(offGood&&score<0)return{cls:'day-caution',vc:'v-caution',label:'Proceed with care',advice:'Universal day is decent but your chart is slightly resistant. Follow up on existing work rather than starting fresh initiatives.'};
+  return{cls:'day-rest',vc:'v-rest',label:'Rest day',advice:'A neutral day across both layers. Fine for routine work, admin, and quiet progress. Save important moves for stronger days.'};
+}
+
+function calc(){
+  const dStr=document.getElementById('bDate').value;
+  const tStr=document.getElementById('bTime').value;
+  const err=document.getElementById('errMsg');
+  if(!dStr||!tStr){err.textContent='Please enter your birth date and time.';err.classList.remove('hidden');return;}
+  err.classList.add('hidden');
+  bazi=calcBazi(dStr,tStr);
+  curYear=parseInt(document.getElementById('bYear').value);
+  curMon=new Date().getMonth();
+  const name=document.getElementById('bName').value.trim();
+  renderDM(name);renderPillars();renderLP(document.getElementById('bGender').value);renderOfficerGuide();renderCal();
+  document.getElementById('resSec').classList.remove('hidden');
+  document.getElementById('resSec').scrollIntoView({behavior:'smooth'});
+}
+
+function renderDM(name){
+  const s=STEMS[bazi.dm];const info=DM[s];
+  document.getElementById('dmCn').textContent=s;
+  document.getElementById('dmName').textContent=(name?name+"'s ":'')+'Day Master: '+info[0];
+  document.getElementById('dmDesc').textContent=info[1];
+}
+function renderPillars(){
+  const labels=['Year','Month','Day','Hour'];
+  const ps=[bazi.year,bazi.month,bazi.day,bazi.hour];
+  const g=document.getElementById('pillarsGrid');g.innerHTML='';
+  ps.forEach((p,i)=>{
+    const el=document.createElement('div');el.className='pc';
+    const elem=STEM_ELEM[p.stem];const col=ELEM_COL[elem];
+    el.innerHTML=`<div class="pc-lbl">${labels[i]} pillar</div>
+      <div class="pc-cn">${STEMS[p.stem]}${BRANCHES[p.branch]}</div>
+      <div class="pc-en">${STEM_EN[p.stem]}</div>
+      <div class="pc-sub">${BRANCH_EN[p.branch]}</div>
+      <span class="eb" style="background:${col}22;color:${col}">${elem}</span>`;
+    g.appendChild(el);
+  });
+}
+function renderLP(gender){
+  const yp=bazi.year;const isYang=yp.stem%2===0;
+  const forward=(isYang&&gender==='m')||(!isYang&&gender==='f');
+  const base=bazi.month;
+  const nowAge=new Date().getFullYear()-bazi.birthDate.getFullYear();
+  const g=document.getElementById('lpGrid');g.innerHTML='';
+  for(let i=1;i<=8;i++){
+    const offset=forward?i:-i;
+    const si=((base.stem+offset)%10+10)%10;
+    const bi=((base.branch+offset)%12+12)%12;
+    const startAge=i*10-10+8;const endAge=startAge+9;
+    const isCur=nowAge>=startAge&&nowAge<=endAge;
+    const el=document.createElement('div');el.className='lpc'+(isCur?' cur':'');
+    const elem=STEM_ELEM[si];const col=ELEM_COL[elem];
+    el.innerHTML=`<div class="lpc-age">Age ${startAge}–${endAge}</div>
+      <div class="lpc-cn">${STEMS[si]}${BRANCHES[bi]}</div>
+      <div class="lpc-en" style="color:${col}">${elem}</div>
+      ${isCur?'<div style="font-size:9px;color:#2980b9;margin-top:2px">Current</div>':''}`;
+    g.appendChild(el);
+  }
+}
+function renderOfficerGuide(){
+  const g=document.getElementById('officerGuide');g.innerHTML='';
+  OFFICERS.forEach(o=>{
+    const row=document.createElement('div');row.className='do-row';
+    row.innerHTML=`<span style="font-size:18px;width:24px;flex-shrink:0">${o.cn}</span>
+      <span style="font-weight:500;width:90px;flex-shrink:0">${o.en}</span>
+      <span style="color:#666;flex:1">${o.desc}</span>
+      <span class="tag ${o.good?'tag-g':'tag-b'}" style="flex-shrink:0;margin:0">${o.good?'Favourable':'Avoid'}</span>`;
+    g.appendChild(row);
+  });
+}
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTHS_S=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function renderCal(){
+  document.getElementById('monLbl').textContent=MONTHS[curMon]+' '+curYear;
+  const g=document.getElementById('calGrid');
+  g.innerHTML='';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d=>{const h=document.createElement('div');h.className='cal-hdr';h.textContent=d;g.appendChild(h);});
+  const first=new Date(curYear,curMon,1).getDay();
+  const days=new Date(curYear,curMon+1,0).getDate();
+  const today=new Date();
+  for(let i=0;i<first;i++){const e=document.createElement('div');e.className='dc empty';g.appendChild(e);}
+  for(let d=1;d<=days;d++){
+    const date=new Date(curYear,curMon,d);
+    const dp=getDayPillar(date);
+    const offIdx=getOfficerIdx(date);
+    const off=OFFICERS[offIdx];
+    const{score,ints}=rateDay(dp,bazi);
+    const syn=synthesise(score,off.good);
+    const isToday=date.toDateString()===today.toDateString();
+    const cell=document.createElement('div');
+    cell.className='dc '+syn.cls+(isToday?' today-ring':'');
+    const offCls=off.good?'off-good':'off-bad';
+    cell.innerHTML=`<div class="dc-num">${d}</div>
+      <span class="dc-off ${offCls}">${off.en}</span>
+      <span class="dc-score">score: ${score>0?'+':''}${score}</span>
+      <span class="dc-verdict ${syn.vc}">${syn.label}</span>`;
+    cell.onclick=()=>showDetail(d,date,dp,offIdx,score,ints,syn);
+    g.appendChild(cell);
+  }
+}
+function showDetail(d,date,dp,offIdx,score,ints,syn){
+  const off=OFFICERS[offIdx];
+  const panel=document.getElementById('detPanel');
+  const content=document.getElementById('detContent');
+  const bgMap={strong:'#eaf3de',good:'#f0f7e6',caution:'#fef9ed',avoid:'#fcebeb',conflict:'#eef4fc',rest:'#f8f7f4'};
+  const colMap={strong:'#2d5a0e',good:'#2d5a0e',caution:'#7a5c00',avoid:'#791f1f',conflict:'#0c447c',rest:'#555'};
+  const key=syn.label.toLowerCase().replace(' today','').replace(' day','').replace('proceed with care','caution').replace('conflicting','conflict').replace('rest','rest').replace('strong','strong').replace('good','good');
+  const bg=bgMap[key]||'#f8f7f4';
+  const col=colMap[key]||'#1a1a1a';
+  const scoreBarW=Math.min(100,Math.max(0,(score+8)/16*100));
+  const scoreCol=score>=3?'#2d5a0e':score<=-2?'#c0392b':'#888';
+  const intHTML=ints.length===0
+    ?'<span class="tag tag-n">No major Bazi interactions today</span>'
+    :ints.map(i=>`<span class="tag ${i.t==='g'?'tag-g':'tag-b'}">${i.t==='g'?'✦':'✕'} ${i.d}</span>`).join('');
+  content.innerHTML=`
+    <div class="det-verdict-box" style="background:${bg};color:${col}">
+      <strong>${MONTHS_S[date.getMonth()]} ${d} — ${syn.label}</strong>
+      <p>${syn.advice}</p>
+    </div>
+    <div class="det-grid">
+      <div class="det-box">
+        <div class="det-box-label">Universal day officer</div>
+        <div class="det-box-val" style="color:${off.good?'#2d5a0e':'#c0392b'}">${off.cn} ${off.en}</div>
+        <div class="det-box-sub">${off.desc}</div>
+      </div>
+      <div class="det-box">
+        <div class="det-box-label">Your personal score</div>
+        <div class="det-box-val" style="color:${scoreCol}">${score>0?'+':''}${score} points</div>
+        <div class="score-bar"><div class="score-track"><div class="score-fill" style="width:${Math.round(scoreBarW)}%;background:${scoreCol}"></div></div></div>
+        <div class="det-box-sub">${score>=3?'Auspicious for you':score<=-2?'Inauspicious for you':'Neutral for you'}</div>
+      </div>
+      <div class="det-box">
+        <div class="det-box-label">Day pillar</div>
+        <div class="det-box-val">${STEMS[dp.stem]}${BRANCHES[dp.branch]}</div>
+        <div class="det-box-sub">${STEM_EN[dp.stem]} / ${BRANCH_EN[dp.branch]}</div>
+      </div>
+      <div class="det-box">
+        <div class="det-box-label">Your favourable elements</div>
+        <div class="det-box-val" style="color:${ELEM_COL[STEM_ELEM[dp.stem]]}">${STEM_ELEM[dp.stem]} day</div>
+        <div class="det-box-sub">You favour: ${(FAVELEM[STEM_ELEM[bazi.dm]]||[]).join(', ')}</div>
+      </div>
+    </div>
+    <div class="int-wrap">
+      <div class="int-label">Bazi chart interactions</div>
+      <div class="int-list">${intHTML}</div>
+    </div>`;
+  panel.classList.add('on');
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function chMon(dir){
+  curMon+=dir;
+  if(curMon>11){curMon=0;curYear++;}
+  if(curMon<0){curMon=11;curYear--;}
+  renderCal();
+  document.getElementById('detPanel').classList.remove('on');
+}
+renderOfficerGuide();
+</script>
+</body>
+</html>
