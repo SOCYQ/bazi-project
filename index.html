@@ -582,7 +582,14 @@ function renderCal(){
     const actR=rateActivity(offIdx,stars,curAct);
     const isToday=date.toDateString()===today.toDateString();
     const cell=document.createElement('div');
-    cell.className='dc '+syn.cls+(isToday?' today-ring':'');
+    let cellCls=syn.cls;
+if(actR&&curAct!=='all'){
+  if(actR.rating==='excellent')cellCls='day-strong';
+  else if(actR.rating==='good')cellCls='day-good';
+  else if(actR.rating==='avoid')cellCls='day-avoid';
+  else cellCls='day-rest';
+}
+cell.className='dc '+cellCls+(isToday?' today-ring':'');
     const offCls=off.good?'off-good':'off-bad';
     const gStars=stars.filter(s=>s.good).map(s=>s.en.split(' ').slice(0,2).join(' ')).slice(0,2).join(', ');
     const bStars=stars.filter(s=>!s.good).map(s=>s.en.split(' ')[0]).slice(0,1).join('');
